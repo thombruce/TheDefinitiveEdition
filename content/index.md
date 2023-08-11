@@ -4,4 +4,5 @@ _The Definitive Edition_ is a blog dedicated to documenting the best way to play
 
 ---
 
+- [Games](/games)
 - [About](/about)
