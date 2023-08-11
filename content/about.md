@@ -1,3 +1,8 @@
+---
+navigation:
+  title: About
+---
+
 # About The Definitive Edition
 
 _The Definitive Edition_ was founded in 2023 by [Thom Bruce](https://thombruce.com/) with an aim to list classic games and the best ways to play them. Oftentimes, games would have multiple releases and some ports would be better than others - this was never truer than during the arcade era where arcade games were eventually ported to less powerful home consoles, usually with results that didn't hold a candle to their arcade cabinet counterparts.
