@@ -1,3 +1,7 @@
-# About Content v2
+# About The Definitive Edition
+
+_The Definitive Edition_ was founded in 2023 by [Thom Bruce](https://thombruce.com/) with an aim to list classic games and the best ways to play them. Oftentimes, games would have multiple releases and some ports would be better than others - this was never truer than during the arcade era where arcade games were eventually ported to less powerful home consoles, usually with results that didn't hold a candle to their arcade cabinet counterparts.
+
+These days, there are countless ways to emulate and play older games and many companies are coming out with rereleases of their own classic titles. We're spoiled for choice for ways to play retro games, but not all of them are great. _The Definitive Edition_ aims to sift through the chaff in order to find and recommend the very best ways to experience classic titles.
 
 [Back home](/)

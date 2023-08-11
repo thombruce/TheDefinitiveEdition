@@ -1,9 +1,7 @@
-# Nuxt Content
+# The Definitive Edition
 
-This page corresponds to the `/` route of your website. You can delete it or create another file in the `content/` directory.
-
-Try to navigate to [/about](/about). These 2 pages are rendered by the `pages/[...slug].vue` component.
+_The Definitive Edition_ is a blog dedicated to documenting the best way to play classic games.
 
 ---
 
-Look at the [Content documentation](https://content.nuxtjs.org/) to learn more.
+- [About](/about)
