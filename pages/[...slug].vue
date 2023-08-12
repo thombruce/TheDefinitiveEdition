@@ -10,9 +10,12 @@ const query: QueryBuilderParams = { path: route.path, where: [{ navigation: { $n
     <ContentDoc>
       <template #default="{ doc }">
         <h1>{{ doc.title }}</h1>
+        <Breadcrumbs />
         <ContentRenderer :value="doc" />
       </template>
-      <template #empty></template>
+      <template #empty>
+        <Breadcrumbs />
+      </template>
     </ContentDoc>
     <ContentList :query="query">
       <template #default="{ list }">
