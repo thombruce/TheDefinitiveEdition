@@ -23,7 +23,7 @@
         <p class="font-bold">
           The Limited Edition <br/>In pursuit of perfection since 2023
         </p>
-        <p>Copyright © {{ new Date().getFullYear() }} - All right reserved</p>
+        <p>Copyright © {{ new Date().getFullYear() }} - All rights reserved</p>
       </div>
     </footer>
   </div>
