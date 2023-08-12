@@ -23,7 +23,7 @@ const appInfo = await queryContent('/_app/config').only(['name', 'footer']).find
     </div>
     <footer class="footer footer-center p-10 bg-base-200 text-base-content">
       <div>
-        <div v-html="appInfo.footer.icon"></div>
+        <div v-html="appInfo.footer.icon" class="fill-current"></div>
         <p class="font-bold whitespace-pre">
           {{ appInfo.footer.text }}
         </p>
