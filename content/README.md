@@ -1,10 +1,4 @@
----
-navigation: false
----
-
 # README
-
-This is an example file. It won't be shown on your site or appear in your queries.
 
 To get started, add your own Markdown content to the `/content` directory.
 
