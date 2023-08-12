@@ -13,13 +13,14 @@ _Configure NUXT_APP_BASE_URL to the name of your repo (e.g. /tnt/) in your envir
 ```sh
 git clone https://github.com/thombruce/tnt.git {your app}
 cd {your app}
-git remote rename origin tnt
-git remote add origin {your repo}
+git remote set-url origin {your repo}
+git push -u origin main
 ```
 
 ### Updating
 
 ```sh
+git remote add tnt https://github.com/thombruce/tnt.git
 git pull --rebase tnt
 ```
 
