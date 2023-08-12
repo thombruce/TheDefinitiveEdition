@@ -6,16 +6,13 @@ const query: QueryBuilderParams = { path: route.path, where: [{ navigation: { $n
 </script>
 
 <template>
-  <main>
+  <main class="my-10">
+    <Breadcrumbs class="not-prose" />
     <ContentDoc>
       <template #default="{ doc }">
-        <h1>{{ doc.title }}</h1>
-        <Breadcrumbs />
         <ContentRenderer :value="doc" />
       </template>
-      <template #empty>
-        <Breadcrumbs />
-      </template>
+      <template #empty></template>
     </ContentDoc>
     <ContentList :query="query">
       <template #default="{ list }">

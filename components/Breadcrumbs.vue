@@ -24,7 +24,7 @@ const crumbs = computed(() => {
 </script>
 
 <template>
-  <div class="text-sm breadcrumbs bg-base-200">
+  <div v-if="crumbs" class="text-sm breadcrumbs">
     <ul>
       <li>
         <NuxtLink to="/">Home</NuxtLink>

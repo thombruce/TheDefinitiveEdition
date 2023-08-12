@@ -14,7 +14,7 @@
         </div>
       </ContentNavigation>
     </div>
-    <div  class="prose mx-auto my-10">
+    <div  class="prose mx-auto">
       <slot />
     </div>
     <footer class="footer footer-center p-10 bg-base-200 text-base-content">
