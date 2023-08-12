@@ -6,6 +6,8 @@
 
 ## Usage
 
+_Configure NUXT_APP_BASE_URL to the name of your repo (e.g. /tnt/) in your environment if you want to deploy to GitHub Pages from a project repo._
+
 ### Installation
 
 ```sh
