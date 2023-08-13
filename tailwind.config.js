@@ -8,5 +8,12 @@ module.exports = {
     require('@tailwindcss/typography'),
     require("daisyui")
   ],
+  daisyui: {
+    themes: [
+      "autumn",
+      { dark: { ...require("daisyui/src/theming/themes")["[data-theme=dracula]"] }
+      }
+    ]
+  }
 }
 
