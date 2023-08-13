@@ -1,8 +1,7 @@
 ---
+title: TNT
 navigation: false
 ---
-
-# TNT
 
 A dynamite Nuxt template.
 
