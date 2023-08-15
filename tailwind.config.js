@@ -2,7 +2,7 @@
 module.exports = {
   daisyui: {
     themes: [
-      "autumn",
+      { light: { ...require("daisyui/src/theming/themes")["[data-theme=autumn]"] } },
       { dark: { ...require("daisyui/src/theming/themes")["[data-theme=dracula]"] }
       }
     ]
