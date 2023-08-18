@@ -1,5 +1,5 @@
 <script setup>
-const query = ref('foo')
+const query = ref('')
 
 const results = ref({})
 
@@ -11,7 +11,6 @@ async function search() {
 
 <template>
   <input type="text" class="input input-bordered" @change="search()" v-model="query" />
-  <span>{{ query }}</span>
   <div v-if="results">
     {{ results }}
   </div>
