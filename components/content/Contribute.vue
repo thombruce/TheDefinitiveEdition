@@ -1,8 +1,6 @@
 <script setup>
 const { hostname } = useAppConfig()
 const route = useRoute()
-
-const { data } = await useFetch('/api/games')
 </script>
 
 <template>
