@@ -4,7 +4,7 @@ const query = ref('foo')
 const { data: results } = {}
 
 async function search() {
-  results = await useFetch('/.netlify/functions/igdb/games', { body: { query } })
+  results = await useFetch('/.netlify/functions/games', { body: { query } })
   console.log(results)
 }
 </script>
