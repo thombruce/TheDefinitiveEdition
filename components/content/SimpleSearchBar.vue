@@ -1,11 +1,11 @@
 <script setup>
 const query = ref('foo')
 
-const { data: results } = {}
+const results = ref({})
 
 async function search() {
-  results = await useFetch('/.netlify/functions/games', { body: { query } })
-  console.log(results)
+  results.value = await useFetch('/.netlify/functions/games', { body: { query: query.value } })
+  console.log(results.value)
 }
 </script>
 
