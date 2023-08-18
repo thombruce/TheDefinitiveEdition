@@ -4,7 +4,7 @@ const query = ref('foo')
 const results = ref({})
 
 async function search() {
-  results.value = await useFetch('/.netlify/functions/games', { body: { query: query.value } })
+  results.value = await useFetch('/.netlify/functions/games', { method: 'post', body: { query: query.value } })
   console.log(results.value)
 }
 </script>
