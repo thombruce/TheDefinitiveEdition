@@ -12,7 +12,7 @@ async function search() {
 </script>
 
 <template>
-  <div class="dropdown mb-32">
+  <details class="dropdown mb-32">
     <summary class="list-none">
       <input type="text" class="input input-bordered" @change="search()" v-model="query" />
     </summary>
@@ -21,5 +21,5 @@ async function search() {
         <a>{{ result.name }}</a>
       </li>
     </ul>
-  </div>
+  </details>
 </template>
