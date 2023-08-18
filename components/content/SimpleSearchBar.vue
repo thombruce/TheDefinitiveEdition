@@ -4,20 +4,16 @@ const query = ref('')
 const results = ref({})
 
 async function search() {
-  const response = await useFetch('/.netlify/functions/games', { method: 'post', body: { query: query.value } })
-  results.value = await JSON.parse(response.data)
+  await useFetch('/.netlify/functions/games', { method: 'post', body: { query: query.value } })
+    .then((response) => {
+      results.value = JSON.parse(response.data)
+    })
 }
 </script>
 
 <template>
-  <input type="text" class="input input-bordered" @change="search()" v-model="query" />
-  <div v-if="results">
-    {{ results }}
-  </div>
-
-
   <div class="dropdown mb-32">
-    <summary class="m-1 btn">
+    <summary class="list-none">
       <input type="text" class="input input-bordered" @change="search()" v-model="query" />
     </summary>
     <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
