@@ -3,6 +3,8 @@
 # For example, you can have one property to handle comment submission and
 # another one to handle posts.
 articles:
+  allowedOrigins: ["localhost", "thedefinitiveedition.thombruce.com"]
+
   # (*) REQUIRED
   #
   # Names of the fields the form is allowed to submit. If a field that is
