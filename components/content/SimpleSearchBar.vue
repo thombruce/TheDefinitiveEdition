@@ -37,6 +37,7 @@ onClickOutside(target, () => isActive.value = false)
       :name="inputname"
       :class="`${inputclass}${isActive && results.length ? ' join-item' : ''}`"
       type="text"
+      autocomplete="off"
       @focus="isActive = true"
       @input="search()"
       v-model="query"
