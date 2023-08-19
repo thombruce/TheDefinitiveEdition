@@ -6,7 +6,8 @@ const results = ref({})
 async function search() {
   await useFetch('/.netlify/functions/games', { method: 'post', body: { query: query.value } })
     .then((response) => {
-      results.value = JSON.parse(response.data)
+      console.log(response.data)
+      results.value = response.data // JSON.parse(response.data)
     })
 }
 </script>
