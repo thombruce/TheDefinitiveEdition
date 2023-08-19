@@ -14,5 +14,8 @@
     "@thombruce/tnt": "^0.3.2",
     "@types/node": "^20.5.1",
     "nuxt": "^3.6.5"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }

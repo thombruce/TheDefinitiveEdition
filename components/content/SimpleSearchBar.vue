@@ -1,38 +1,44 @@
 <script setup>
+import { debounce as _debounce } from 'lodash'
+
+defineProps([
+  'inputid',
+  'inputname',
+  'inputclass'
+])
+
 const query = ref('')
 
 // TODO: Auto-generate slugs if result origin is IGDB (/content should already have nice slugs)
 // TODO: Query content/ first and combine results
-// TODO: Debounce IGDB queries
 const results = ref([])
 
-// TODO: Use @input and debounce the search somehow - maybe use lodash _debounce?
-async function search() {
-  const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
-  results.value = await response.json()
-  console.log(results.value)
+function search() {
+  _debounce(async () => {
+    const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
+    results.value = await response.json()
+    console.log(results.value)
+  }, 500, { 'maxwait': 2000 })
+}
+
+function populate(value) {
+  query.value = value
 }
 </script>
 
 <template>
-  <div class="form-control">
-    <label for="contributionGame" class="label">
-      <span class="label-text">Game</span>
-      <span class="label-text-alt">Powered by <a href="https://www.igdb.com/" target="_blank">IGDB</a></span>
-    </label>
-    <div class="join join-vertical">
-      <input
-        id="contributionGame"
-        type="text"
-        :class="`input input-bordered${results.length ? ' join-item' : ''}`"
-        @change="search()"
-        v-model="query"
-      />
-      <ul class="menu bg-base-200 join-item" v-show="results.length">
-        <li v-for="result in results" :key="result.name">
-          <a>{{ result.name }}</a>
-        </li>
-      </ul>
-    </div>
+  <div class="join join-vertical">
+    <input
+      :id="inputid"
+      :name="inputname"
+      :class="`${inputclass}${results.length ? ' join-item' : ''}`"
+      @input="search()"
+      v-model="query"
+    />
+    <ul class="menu bg-base-200 join-item" v-show="results.length">
+      <li v-for="result in results" :key="result.name">
+        <a @click="populate(result.name)">{{ result.name }}</a>
+      </li>
+    </ul>
   </div>
 </template>

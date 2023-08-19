@@ -23,9 +23,11 @@ const route = useRoute()
     <input id="contributionTitle" name="fields[title]" type="text" class="input input-bordered" />
   </div>
   <div class="form-control">
-    <label for="contributionGame" class="label"><span class="label-text">Game</span></label>
-    <input id="contributionGame" name="fields[game]" type="text" class="input input-bordered" />
-    <!-- TODO: Implement search -->
+    <label for="contributionGame" class="label">
+      <span class="label-text">Game</span>
+      <span class="label-text-alt">Powered by <a href="https://www.igdb.com/" target="_blank">IGDB</a></span>
+    </label>
+    <SimpleSearchBar inputid="contributionGame" inputname="fields[game]" inputclass="input input-bordered" />
     <!-- TODO: Slugify for use as Dir name -->
   </div>
   <div class="form-control">
