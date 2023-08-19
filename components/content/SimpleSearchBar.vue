@@ -9,7 +9,9 @@ const query = ref('')
 
 // TODO: Auto-generate slugs if result origin is IGDB (/content should already have nice slugs)
 // TODO: Query content/ first and combine results
-const results = ref([])
+const results = ref([
+  { 'name': 'Gran Turismo' }
+])
 
 const isActive = ref(false)
 
@@ -24,10 +26,14 @@ function populate(value) {
   search() // Reperform search with updated value
   isActive.value = false
 }
+
+const target = ref(null)
+
+onClickOutside(target, () => isActive.value = false)
 </script>
 
 <template>
-  <div class="join join-vertical">
+  <div class="join join-vertical" ref="target">
     <input
       :id="inputid"
       :name="inputname"
