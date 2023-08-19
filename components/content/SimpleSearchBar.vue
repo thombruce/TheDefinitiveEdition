@@ -6,7 +6,7 @@ const results = ref({})
 async function search() {
   await useFetch('/.netlify/functions/games', { method: 'post', body: { query: query.value } })
     .then((response) => {
-      results.value = response.data // JSON.parse(response.data)
+      results.value = JSON.parse(JSON.stringify(response.data))
     })
 }
 </script>
@@ -16,11 +16,10 @@ async function search() {
     <summary class="list-none">
       <input type="text" class="input input-bordered" @change="search()" v-model="query" />
     </summary>
-    <p>{{ results }}</p>
-    <!-- <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+    <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
       <li v-for="result in results">
         <a>{{ result.name }}</a>
       </li>
-    </ul> -->
+    </ul>
   </details>
 </template>
