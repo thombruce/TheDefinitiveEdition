@@ -11,6 +11,8 @@ const query = ref('')
 // TODO: Query content/ first and combine results
 const results = ref([])
 
+const isActive = ref(false)
+
 const search = _throttle(async () => {
   const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
   results.value = await response.json()
@@ -20,6 +22,7 @@ const search = _throttle(async () => {
 function populate(value) {
   query.value = value
   search() // Reperform search with updated value
+  isActive.value = false
 }
 </script>
 
@@ -28,24 +31,16 @@ function populate(value) {
     <input
       :id="inputid"
       :name="inputname"
-      :class="`${inputclass}${results.length ? ' join-item' : ''}`"
+      :class="`${inputclass}${isActive && results.length ? ' join-item' : ''}`"
       type="text"
+      @focus="isActive = true"
       @input="search()"
       v-model="query"
     />
-    <ul class="menu bg-base-200 join-item" v-show="results.length">
+    <ul class="menu bg-base-200 join-item" v-show="isActive && results.length">
       <li v-for="result in results" :key="result.name">
         <a @click="populate(result.name)">{{ result.name }}</a>
       </li>
     </ul>
   </div>
 </template>
-
-<style scoped>
-div.join > ul.menu {
-  display: none;
-}
-div.join:focus-within > ul.menu {
-  display: flex;
-}
-</style>
