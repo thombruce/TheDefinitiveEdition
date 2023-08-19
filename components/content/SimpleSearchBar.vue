@@ -14,7 +14,7 @@ const query = ref('')
 const results = ref([])
 
 async function search() {
-  _throttle(async () => {
+  _throttle(async function () {
     const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
     results.value = await response.json()
     console.log(results.value)
