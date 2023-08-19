@@ -1,5 +1,5 @@
 <script setup>
-import { debounce as _debounce } from 'lodash'
+import { throttle as _throttle } from 'lodash'
 
 defineProps([
   'inputid',
@@ -14,13 +14,11 @@ const query = ref('')
 const results = ref([])
 
 async function search() {
-  const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
-  results.value = await response.json()
-  console.log(results.value)
-}
-
-function debouncedSearch() {
-  _debounce(search, 500, { 'maxwait': 2000 })
+  _throttle(async () => {
+    const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
+    results.value = await response.json()
+    console.log(results.value)
+  }, 500)
 }
 
 function populate(value) {
@@ -34,7 +32,7 @@ function populate(value) {
       :id="inputid"
       :name="inputname"
       :class="`${inputclass}${results.length ? ' join-item' : ''}`"
-      @input="debouncedSearch()"
+      @input="search()"
       v-model="query"
     />
     <ul class="menu bg-base-200 join-item" v-show="results.length">
