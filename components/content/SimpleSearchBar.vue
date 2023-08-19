@@ -20,7 +20,7 @@ async function search() {
     console.log(results.value)
   }, 5000)
 
-  await this.throttledSearch()
+  await throttledSearch()
 }
 
 function populate(value) {
