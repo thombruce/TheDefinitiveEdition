@@ -13,11 +13,13 @@ const query = ref('')
 // TODO: Query content/ first and combine results
 const results = ref([])
 
-const search = _throttle(async function () {
-  const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
-  results.value = await response.json()
-  console.log(results.value)
-}, 500)
+async function search() {
+  _throttle(async () => {
+    const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
+    results.value = await response.json()
+    console.log(results.value)
+  }, 500)()
+}
 
 function populate(value) {
   query.value = value
