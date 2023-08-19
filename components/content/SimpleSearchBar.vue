@@ -19,6 +19,7 @@ const search = _throttle(async () => {
 
 function populate(value) {
   query.value = value
+  search() // Reperform search with updated value
 }
 </script>
 
@@ -39,3 +40,12 @@ function populate(value) {
     </ul>
   </div>
 </template>
+
+<style scoped>
+div.join > ul.menu {
+  display: none;
+}
+div.join:focus-within > ul.menu {
+  display: flex;
+}
+</style>
