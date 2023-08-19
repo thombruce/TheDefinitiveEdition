@@ -13,12 +13,14 @@ const query = ref('')
 // TODO: Query content/ first and combine results
 const results = ref([])
 
-function search() {
-  _debounce(async () => {
-    const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
-    results.value = await response.json()
-    console.log(results.value)
-  }, 500, { 'maxwait': 2000 })
+async function search() {
+  const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
+  results.value = await response.json()
+  console.log(results.value)
+}
+
+function debouncedSearch() {
+  _debounce(search, 500, { 'maxwait': 2000 })
 }
 
 function populate(value) {
@@ -32,7 +34,7 @@ function populate(value) {
       :id="inputid"
       :name="inputname"
       :class="`${inputclass}${results.length ? ' join-item' : ''}`"
-      @input="search()"
+      @input="debouncedSearch()"
       v-model="query"
     />
     <ul class="menu bg-base-200 join-item" v-show="results.length">
