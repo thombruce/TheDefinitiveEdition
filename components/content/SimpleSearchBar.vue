@@ -9,9 +9,7 @@ const query = ref('')
 
 // TODO: Auto-generate slugs if result origin is IGDB (/content should already have nice slugs)
 // TODO: Query content/ first and combine results
-const results = ref([
-  { 'name': 'Gran Turismo' }
-])
+const results = ref([])
 
 const isActive = ref(false)
 
