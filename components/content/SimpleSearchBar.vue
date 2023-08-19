@@ -1,6 +1,4 @@
 <script setup>
-import { throttle as _throttle } from 'lodash'
-
 defineProps([
   'inputid',
   'inputname',
@@ -14,11 +12,9 @@ const query = ref('')
 const results = ref([])
 
 async function search() {
-  _throttle(async function () {
-    const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
-    results.value = await response.json()
-    console.log(results.value)
-  }, 500)
+  const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
+  results.value = await response.json()
+  console.log(results.value)
 }
 
 function populate(value) {
@@ -32,7 +28,8 @@ function populate(value) {
       :id="inputid"
       :name="inputname"
       :class="`${inputclass}${results.length ? ' join-item' : ''}`"
-      @input="search()"
+      type="text"
+      @change="search()"
       v-model="query"
     />
     <ul class="menu bg-base-200 join-item" v-show="results.length">
