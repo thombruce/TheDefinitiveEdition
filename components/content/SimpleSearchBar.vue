@@ -1,6 +1,4 @@
 <script setup>
-import { throttle as _throttle } from 'lodash'
-
 defineProps([
   'inputid',
   'inputname',
@@ -13,25 +11,12 @@ const query = ref('')
 // TODO: Query content/ first and combine results
 const results = ref([])
 
-async function search() {
-  const throttledSearch = _throttle(async () => {
-    // const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
-    // results.value = await response.json()
-    // console.log(results.value)
-    console.log(`throttled: ${Date.now()}`)
-  }, 5000)
-
-  const debouncedSearch = _throttle(async () => {
-    // const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
-    // results.value = await response.json()
-    // console.log(results.value)
-    console.log(`debounced: ${Date.now()}`)
-  }, 5000)
-
-  throttledSearch()
-
-  debouncedSearch()
-}
+const search = _throttle(async () => {
+  // const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
+  // results.value = await response.json()
+  // console.log(results.value)
+  console.log(`throttled: ${Date.now()}`)
+}, 5000)
 
 function populate(value) {
   query.value = value
