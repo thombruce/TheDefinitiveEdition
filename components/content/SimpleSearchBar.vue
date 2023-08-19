@@ -12,11 +12,10 @@ const query = ref('')
 const results = ref([])
 
 const search = _throttle(async () => {
-  // const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
-  // results.value = await response.json()
-  // console.log(results.value)
-  console.log(`throttled: ${Date.now()}`)
-}, 5000)
+  const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
+  results.value = await response.json()
+  console.log(results.value)
+}, 500)
 
 function populate(value) {
   query.value = value
