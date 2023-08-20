@@ -9,6 +9,7 @@ const query = ref('')
 
 // TODO: Auto-generate slugs if result origin is IGDB (/content should already have nice slugs)
 // TODO: Query content/ first and combine results
+// TODO: Filter results; no duplicates, except same title different year
 const results = ref([])
 
 const isActive = ref(false)
