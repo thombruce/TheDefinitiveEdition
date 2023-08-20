@@ -11,14 +11,20 @@ const query = ref('')
 // TODO: Query content/ first and combine results
 const results = ref([])
 
+const treated = computed(() => {
+  _chain(results.value)
+    .map((game) => {
+      return { name: game.name, release_date: _minBy(game.release_dates, 'y') }
+    })
+    .uniq()
+    .value()
+})
+
 const isActive = ref(false)
 
 const search = _debounce(async () => {
   const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
-  const raw = await response.json()
-  results.value = _uniq(_map(raw, (g) => {
-    return { name: g.name, release_date: _minBy(g.release_dates, 'y')['y'] }
-  }))
+  results.value = await response.json()
   console.log(results.value)
 }, 250, { 'maxWait': 500 })
 
@@ -46,10 +52,10 @@ onClickOutside(target, () => isActive.value = false)
       v-model="query"
     />
     <ul class="menu bg-base-200 join-item" v-show="isActive && results.length">
-      <li v-for="result in results" :key="result.name">
+      <li v-for="result in treated" :key="result.name">
         <a @click="populate(result.name)">
           {{ result.name }}
-          <span v-if="result.release_date">({{ result.release_date }})</span>
+          <span v-if="result.release_date">({{ result.release_date.y }})</span>
         </a>
       </li>
     </ul>
