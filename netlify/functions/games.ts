@@ -10,7 +10,7 @@ exports.handler = async (event: any, context: any, callback: any) => {
           'Client-ID': `${process.env.TWITCH_CLIENT_ID}`,
           'Authorization': `Bearer ${process.env.TWITCH_AUTH_TOKEN}`,
         },
-        body: `fields name, first_release_date.y; search "${body.query}"; where version_parent = null & category = 0; limit 50;`
+        body: `fields name, release_date.y; search "${body.query}"; where version_parent = null & category = 0; limit 50;`
       }
     )
     const data = await response.json()

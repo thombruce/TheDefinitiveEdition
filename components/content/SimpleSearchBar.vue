@@ -47,7 +47,7 @@ onClickOutside(target, () => isActive.value = false)
       <li v-for="result in results" :key="result.name">
         <a @click="populate(result.name)">
           {{ result.name }}
-          <span v-if="result.first_release_date">({{ first_release_date }})</span>
+          <span v-if="result.release_date">({{ result.release_date }})</span>
         </a>
       </li>
     </ul>
