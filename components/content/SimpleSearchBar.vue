@@ -13,7 +13,10 @@ const results = ref([])
 
 const treated = computed(() => {
   const mapped = _map(results.value, (game) => {
-    return { name: game.name, release_date: _minBy(game.release_dates, 'y') }
+    const release_date = _minBy(game.release_dates, 'y')?.y
+    const title = game.name + (release_date ? ` (${release_date})` : '')
+    const slug = title.replace(/\s/, '')
+    return { title, slug }
   })
   const uniq = _uniq(mapped)
   return uniq
@@ -29,7 +32,7 @@ const search = _debounce(async () => {
 
 function populate(value) {
   query.value = value
-  search() // Reperform search with updated value
+  search()
   isActive.value = false
 }
 
@@ -43,19 +46,16 @@ onClickOutside(target, () => isActive.value = false)
     <input
       :id="inputid"
       :name="inputname"
-      :class="`${inputclass}${isActive && results.length ? ' join-item' : ''}`"
+      :class="`${inputclass}${isActive && treated.length ? ' join-item' : ''}`"
       type="text"
       autocomplete="off"
       @focus="isActive = true"
       @input="search()"
       v-model="query"
     />
-    <ul class="menu bg-base-200 join-item" v-show="isActive && results.length">
-      <li v-for="result in treated" :key="result.name">
-        <a @click="populate(result.name)">
-          {{ result.name }}
-          <span v-if="result.release_date">({{ result.release_date.y }})</span>
-        </a>
+    <ul class="menu bg-base-200 join-item" v-show="isActive && treated.length">
+      <li v-for="result in treated" :key="result.slug">
+        <a @click="populate(result.title)">{{ result.title }}</a>
       </li>
     </ul>
   </div>
