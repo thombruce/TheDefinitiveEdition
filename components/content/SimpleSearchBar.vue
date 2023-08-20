@@ -12,12 +12,11 @@ const query = ref('')
 const results = ref([])
 
 const treated = computed(() => {
-  _chain(results.value)
-    .map((game) => {
-      return { name: game.name, release_date: _minBy(game.release_dates, 'y') }
-    })
-    .uniq()
-    .value()
+  const mapped = _map((game) => {
+    return { name: game.name, release_date: _minBy(game.release_dates, 'y') }
+  })
+  const uniq = _uniq(mapped)
+  return uniq
 })
 
 const isActive = ref(false)
