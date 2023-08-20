@@ -17,7 +17,7 @@ const search = _debounce(async () => {
   const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
   const raw= await response.json()
   results.value = _uniq(raw.map((g) => {
-    return { name: g.name, release_date: _minBy(g.release_dates, 'y') }
+    return { name: g.name, release_date: _minBy(g.release_dates, 'y').y }
   }))
   console.log(results.value)
 }, 250, { 'maxWait': 500 })
