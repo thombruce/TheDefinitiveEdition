@@ -17,7 +17,7 @@ const search = _debounce(async () => {
   const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
   results.value = await response.json()
   console.log(results.value)
-}, 500, { 'maxWait': 1000 })
+}, 250, { 'maxWait': 500 })
 
 function populate(value) {
   query.value = value
