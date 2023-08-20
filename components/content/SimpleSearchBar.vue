@@ -12,7 +12,7 @@ const query = ref('')
 const results = ref([])
 
 const treated = computed(() => {
-  const mapped = _map((game) => {
+  const mapped = _map(results.value, (game) => {
     return { name: game.name, release_date: _minBy(game.release_dates, 'y') }
   })
   const uniq = _uniq(mapped)
