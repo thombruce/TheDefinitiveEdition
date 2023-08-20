@@ -45,7 +45,10 @@ onClickOutside(target, () => isActive.value = false)
     />
     <ul class="menu bg-base-200 join-item" v-show="isActive && results.length">
       <li v-for="result in results" :key="result.name">
-        <a @click="populate(result.name)">{{ result.name }}</a>
+        <a @click="populate(result.name)">
+          {{ result.name }}
+          <span v-if="result.first_release_date">({{ new Date(result.first_release_date).getFullYear() }})</span>
+        </a>
       </li>
     </ul>
   </div>
