@@ -9,14 +9,16 @@ const query = ref('')
 
 // TODO: Auto-generate slugs if result origin is IGDB (/content should already have nice slugs)
 // TODO: Query content/ first and combine results
-// TODO: Filter results; no duplicates, except same title different year
 const results = ref([])
 
 const isActive = ref(false)
 
 const search = _debounce(async () => {
   const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
-  results.value = await response.json()
+  const raw= await response.json()
+  results.value = _uniq(raw.map((g) => {
+    return { name: g.name, release_date: _minBy(g.release_dates, 'y') }
+  }))
   console.log(results.value)
 }, 250, { 'maxWait': 500 })
 
