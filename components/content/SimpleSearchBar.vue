@@ -16,7 +16,7 @@ const treated = computed(() => {
     const release_date = _minBy(game.release_dates, 'y')?.y
     const title = game.name + (release_date ? ` (${release_date})` : '')
     const slug = title.replace(/\s/, '')
-    const platforms = _map(game.platforms, 'name').join(', ')
+    const platforms = _map(_sortBy(game.release_dates, 'y'), (r) => r.platform.abbreviation).join(', ')
     return { title, slug, platforms }
   })
   const uniq = _uniq(mapped)
@@ -56,9 +56,13 @@ onClickOutside(target, () => isActive.value = false)
     />
     <ul class="menu bg-base-200 join-item" v-show="isActive && treated.length">
       <li v-for="result in treated" :key="result.slug" class="truncate">
-        <a @click="populate(result.title)">
-          {{ result.title }}
-          <span class="text-neutral-content">{{ result.platforms }}</span>
+        <a @click="populate(result.title)" class="flex flex-row">
+          <div class="w-2/3">
+            {{ result.title }}
+          </div>
+          <div class="w-1/3 text-neutral-content truncate">
+            {{ result.platforms }}
+          </div>
         </a>
       </li>
     </ul>
