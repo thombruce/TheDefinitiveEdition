@@ -55,8 +55,8 @@ onClickOutside(target, () => isActive.value = false)
       v-model="query"
     />
     <ul class="menu bg-base-200 join-item" v-show="isActive && treated.length">
-      <li v-for="result in treated" :key="result.slug">
-        <a @click="populate(result.title)" class="flex flex-row">
+      <li v-for="result in treated" :key="result.slug" class="w-full">
+        <a @click="populate(result.title)" class="flex flex-row w-full">
           <div class="flex-initial w-2/3 truncate">
             {{ result.title }}
           </div>
