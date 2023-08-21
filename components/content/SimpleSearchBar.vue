@@ -25,8 +25,8 @@ const treated = computed(() => {
 
 const isActive = ref(false)
 
-const search = _debounce(() => {
-  results.value = $fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
+const search = _debounce(async () => {
+  results.value = await $fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query.value }) })
   console.log(results.value)
 }, 250, { 'maxWait': 500 })
 
