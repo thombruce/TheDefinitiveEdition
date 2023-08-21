@@ -16,7 +16,8 @@ const treated = computed(() => {
     const release_date = _minBy(game.release_dates, 'y')?.y
     const title = game.name + (release_date ? ` (${release_date})` : '')
     const slug = title.replace(/\s/, '')
-    return { title, slug }
+    const platforms = game.platforms?.join(', ')
+    return { title, slug, platforms }
   })
   const uniq = _uniq(mapped)
   return uniq
@@ -54,8 +55,9 @@ onClickOutside(target, () => isActive.value = false)
       v-model="query"
     />
     <ul class="menu bg-base-200 join-item" v-show="isActive && treated.length">
-      <li v-for="result in treated" :key="result.slug">
+      <li v-for="result in treated" :key="result.slug" class="truncate">
         <a @click="populate(result.title)">{{ result.title }}</a>
+        <span class="text-neutral-content">{{ result.platforms }}</span>
       </li>
     </ul>
   </div>
