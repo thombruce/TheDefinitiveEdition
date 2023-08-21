@@ -16,7 +16,7 @@ const treated = computed(() => {
     const release_date = _minBy(game.release_dates, 'y')?.y
     const title = game.name + (release_date ? ` (${release_date})` : '')
     const slug = title.replace(/\s/, '')
-    const platforms = _map(_sortBy(game.release_dates, 'y'), (r) => r.platform.abbreviation).join(', ')
+    const platforms = _uniq(_map(_sortBy(game.release_dates, 'y'), (r) => r.platform.abbreviation)).join(', ')
     return { title, slug, platforms }
   })
   const uniq = _uniq(mapped)
