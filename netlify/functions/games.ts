@@ -11,7 +11,7 @@ exports.handler = async (event: any, context: any, callback: any) => {
           'Authorization': `Bearer ${process.env.TWITCH_AUTH_TOKEN}`,
         },
         body: `
-          fields name, release_dates.y, platforms;
+          fields name, release_dates.y, platforms.name;
           search "${body.query}";
           where version_parent = null & category = 0;
           limit 50;
