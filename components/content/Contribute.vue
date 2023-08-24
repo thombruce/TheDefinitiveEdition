@@ -1,45 +1,54 @@
 <script setup>
 const { hostname } = useAppConfig()
 const route = useRoute()
+
+const contribution = ref({
+  name: '',
+  email: '',
+  title: '',
+  game: '',
+  content: '',
+})
+
+const filter = _debounce(async (opts, query) => {
+  // Search
+  const response = await fetch('/.netlify/functions/games', { method: 'POST', body: JSON.stringify({ query: query }) })
+  const arr = await response.json()
+
+  // Parse
+  const mapped = _map(arr, (game) => {
+    const release_date = _minBy(game.release_dates, 'y')?.y
+    const title = game.name + (release_date ? ` (${release_date})` : '')
+    const slug = title.replace(/\s/, '')
+    const platforms = _uniq(_map(_sortBy(game.release_dates, 'y'), (r) => r.platform.abbreviation)).join(', ')
+    // return { title, slug, platforms }
+    return `${title} (${platforms})`
+  })
+  const uniq = _uniq(mapped)
+  return uniq
+}, 250, { 'maxWait': 500 })
 </script>
 
 <template>
-<form method="POST" action="https://staticman.thombruce.com/v3/entry/github/thombruce/thedefinitiveedition/main/articles">
+<TntForm method="POST" action="https://staticman.thombruce.com/v3/entry/github/thombruce/thedefinitiveedition/main/articles">
   <!-- hidden -->
   <input name="options[redirect]" type="hidden" :value="`${hostname}${route.path}`" />
 
   <!-- visible -->
-  <div class="form-control">
-    <label for="contributionName" class="label"><span class="label-text">Name</span></label>
-    <input id="contributionName" name="fields[name]" type="text" class="input input-bordered" />
-  </div>
-  <div class="form-control">
-    <label for="contributionEmail" class="label"><span class="label-text">E-mail</span></label>
-    <input id="contributionEmail" name="fields[email]" type="email" class="input input-bordered" />
-    <label for="contributionEmail" class="label"><span class="label-text-alt">This won't be shown.</span></label>
-  </div>
-  <div class="form-control">
-    <label for="contributionTitle" class="label"><span class="label-text">Title</span></label>
-    <input id="contributionTitle" name="fields[title]" type="text" class="input input-bordered" />
-  </div>
-  <div class="form-control">
-    <label for="contributionGame" class="label">
-      <span class="label-text">Game</span>
-      <span class="label-text-alt">Powered by <a href="https://www.igdb.com/" target="_blank">IGDB</a></span>
-    </label>
-    <SimpleSearchBar inputid="contributionGame" inputname="fields[game]" inputclass="input input-bordered" />
-    <!-- TODO: Slugify for use as Dir name -->
-  </div>
-  <div class="form-control">
-    <label for="contributionContent" class="label">
-      <span class="label-text">Content</span>
-      <span class="label-text-alt">Supports Markdown</span>
-    </label>
-    <textarea id="contributionContent" name="fields[content]" class="textarea textarea-bordered"></textarea>
-  </div>
+  <TntInput v-model="contribution.name" id="contributionName" name="fields[name]" label="Name"/>
+  <TntInput v-model="contribution.email" id="contributionEmail" name="fields[email]" type="email" label="Email" hint="This won't be shown publicly." />
+  <TntInput v-model="contribution.title" id="contributionTitle" name="fields[title]" label="Title"/>
 
-  <div class="mt-5">
-    <button type="submit" class="btn btn-primary">Submit!</button>
-  </div>
-</form>
+  <TntCombobox
+    v-model="contribution.game"
+    id="contributionGame"
+    name="fields[game]"
+    label="Game"
+    labelAlt="Powered by <a href='https://www.igdb.com/' target='_blank'>IGDB</a>"
+    :filter="filter"
+  />
+
+  <TntTextarea v-model="contribution.content" id="contributionContent" name="fields[content]" label="Content" labelAlt="Supports Markdown" />
+  <TntButton />
+</TntForm>
 </template>
