@@ -1056,6 +1056,13 @@
   resolved "https://registry.yarnpkg.com/@socket.io/component-emitter/-/component-emitter-3.1.0.tgz#96116f2a912e0c02817345b3c10751069920d553"
   integrity sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==
 
+"@tailwindcss/forms@^0.5.4":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.5.4.tgz#5316a782fd95369eb5b6fd01d46323b3dce656a2"
+  integrity sha512-YAm12D3R7/9Mh4jFbYSMnsd6jG++8KxogWgqs7hbdo/86aWjjlIEvL7+QYdVELmAI0InXTpZqFIg5e7aDVWI2Q==
+  dependencies:
+    mini-svg-data-uri "^1.2.3"
+
 "@tailwindcss/typography@^0.5.9":
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/@tailwindcss/typography/-/typography-0.5.9.tgz#027e4b0674929daaf7c921c900beee80dbad93e8"
@@ -1066,10 +1073,10 @@
     lodash.merge "^4.6.2"
     postcss-selector-parser "6.0.10"
 
-"@thombruce/tnt@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@thombruce/tnt/-/tnt-0.4.0.tgz#4147ca766b7c4e2bbe28cbe2bbbdb4adde358d50"
-  integrity sha512-N7K7v1yaVbsUETOHcaK5k4OMrtxCGrxxno40ZSlpvfKgefowX2VNhePNlm+ABYmJAjYgJkuGRb2BIRQDo4IEgA==
+"@thombruce/tnt@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@thombruce/tnt/-/tnt-0.3.3.tgz#b7da978620ef4dbe14ff0fab245ad55e080f2ba3"
+  integrity sha512-hq3SZbs3S01cF0k4RIBVjIrlLts0E2LxJckAlExZulOCS0zXKvtRKTH1H6Wj8DcN+LY/g2L17dHm52/Zvpuf4w==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^6.4.2"
     "@fortawesome/free-brands-svg-icons" "^6.4.2"
@@ -1079,6 +1086,7 @@
     "@nuxt/content" "^2.7.2"
     "@nuxt/image" "^1.0.0-rc.1"
     "@nuxtjs/tailwindcss" "^6.8.0"
+    "@tailwindcss/forms" "^0.5.4"
     "@tailwindcss/typography" "^0.5.9"
     "@vueuse/core" "^10.3.0"
     "@vueuse/nuxt" "^10.3.0"
@@ -4317,6 +4325,11 @@ mimic-response@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-3.1.0.tgz#2d1d59af9c1b129815accc2c46a022a5ce1fa3c9"
   integrity sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==
+
+mini-svg-data-uri@^1.2.3:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/mini-svg-data-uri/-/mini-svg-data-uri-1.4.4.tgz#8ab0aabcdf8c29ad5693ca595af19dd2ead09939"
+  integrity sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==
 
 minimatch@^3.0.4, minimatch@^3.1.1:
   version "3.1.2"
