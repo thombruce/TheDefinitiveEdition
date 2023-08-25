@@ -7,6 +7,7 @@ If you want to contribute an article or a comment to _The Definitive Edition_, w
 ## Our contact details
 
 Name: The Definitive Edition
+
 Email: [thedefinitiveedition@thombruce.com](mailto:thedefinitiveedition@thombruce.com)
 
 ## The type of personal information we collect
@@ -51,6 +52,7 @@ Under data protection law, you have rights including:
 - Your right to data portability - You have the right to ask that we transfer the personal information you gave us to another organisation, or to you, in certain circumstances.
 
 You are not required to pay any charge for exercising your rights. If you make a request, we have one month to respond to you.
+
 Please contact us at [thedefinitiveedition@thombruce.com](mailto:thedefinitiveedition@thombruce.com) if you wish to make a request.
 
 ## How to complain
