@@ -1,3 +1,7 @@
+---
+navigation: false
+---
+
 # Privacy Policy
 
 Updated: 2023-08-25
