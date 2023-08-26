@@ -15,7 +15,7 @@ const slug = computed(() => {
   <input name="options[redirect]" type="hidden" :value="`${hostname}${route.path}`" />
 
   <!-- visible -->
-  <TntInput id="contributionName" label="Name" name="fields[name]" type="text" />
+  <TntInput id="contributionAuthor" label="Name" name="fields[author]" type="text" />
 
   <TntInput id="contributionEmail" label="Email" name="fields[email]" type="email" hint="This won't be shown." />
 
