@@ -7,6 +7,18 @@ const title = ref('')
 const slug = computed(() => {
   return _kebabCase(title.value)
 })
+
+const search = async function(opts, query) {
+  return await fetch('/api/games', { method: 'POST', body: JSON.stringify({ query }) })
+    .then(async (response) => {
+      return await response.json().then((results) => {
+        const mapped = _map(results, game => game.name)
+        const uniq = _uniq(mapped)
+        console.log(uniq)
+        return uniq
+      })
+  })
+}
 </script>
 
 <template>
@@ -22,14 +34,14 @@ const slug = computed(() => {
   <TntInput id="contributionTitle" label="Title" name="fields[title]" type="text" v-model="title" />
   <input name="fields[slug]" type="hidden" :value="slug" />
 
-  <div class="form-control">
-    <label for="contributionGame" class="label">
-      <span class="label-text">Game</span>
-      <span class="label-text-alt">Powered by <a href="https://www.igdb.com/" target="_blank">IGDB</a></span>
-    </label>
-    <SimpleSearchBar inputid="contributionGame" inputname="fields[game]" inputclass="input input-bordered" />
-    <!-- TODO: Slugify for use as Dir name -->
-  </div>
+  <TntCombobox
+    label="Game"
+    labelAlt="Powered by <a href='https://www.igdb.com/' target='_blank'>IGDB</a>"
+    id="contributionGame"
+    name="fields[game]"
+    :filter="search"
+    :debounce="{ wait: 250, maxWait: 500 }"
+  />
 
   <TntTextarea id="contributionContent" label="Content" name="fields[content]" labelAlt="Supports Markdown" />
 
