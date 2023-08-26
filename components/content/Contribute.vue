@@ -14,7 +14,6 @@ const search = async function(opts, query) {
       return await response.json().then((results) => {
         const mapped = _map(results, game => game.name)
         const uniq = _uniq(mapped)
-        console.log(uniq)
         return uniq
       })
   })
