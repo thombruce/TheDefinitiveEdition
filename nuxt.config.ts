@@ -4,8 +4,8 @@ export default defineNuxtConfig({
     '@thombruce/tnt'
   ],
   runtimeConfig: {
-    twitchClientID: process.env.CLIENT_ID,
-    twitchAuthToken: process.env.AUTH_TOKEN
+    twitchClientID: process.env.TWITCH_CLIENT_ID,
+    twitchAuthToken: process.env.TWITCH_AUTH_TOKEN
   },
   content: {
     documentDriven: {
