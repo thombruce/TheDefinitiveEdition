@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@netlify/functions": "^1.6.0",
-    "@thombruce/tnt": "^0.5.5",
+    "@thombruce/tnt": "^0.6.1",
     "@types/node": "^20.5.1",
     "nuxt": "^3.6.5"
   }

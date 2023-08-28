@@ -5,9 +5,9 @@ navigation: false
 
 # Privacy Policy
 
-Updated: 2023-08-25
+Updated: 2023-08-28
 
-If you want to contribute an article or a comment to _The Definitive Edition_, we might ask you for a few bits of information. We'll never ask for more than we think is useful, and you will always have the option to contribute anonymously or under a pseudonym. However, if you choose to have your contributions attributed to your actual name or if you're providing your email address so we can show your avatar then this is the real important stuff you need to know. So keep reading!
+If you want to contribute an article or a comment to _The Definitive Edition_, we might ask you for a few bits of information. We'll never ask for more than we think is useful, and you will always have the option to contribute anonymously or under a pseudonym. However, if you choose to have your contributions attributed to your actual name or if you're providing your email address then this is the real important stuff you need to know. So keep reading!
 
 ## Our contact details
 
@@ -22,7 +22,7 @@ We currently collect and process the following information:
 - Names
 - Email addresses
 
-_Whatever name you give us will be stored and displayed as-is. Your email will be hashed before storage and used to display an avatar if you have one connected with your email address at gravatar.com._
+_Whatever name you give us will be stored and displayed as-is. If you're making a content contribution, your email will be hashed before storage and used to display an avatar if you have one connected with your email address at gravatar.com. If you provide an email address with a comment submission, this will be stored alongside your name; we may use this in the future to also show your Gravatar._
 
 ## How we get the personal information and why we have it
 
@@ -33,7 +33,7 @@ Most of the personal information we process is provided to us directly by you fo
 
 We use the information that you have given us in order to provide attribution for the articles and comments submitted by our contributors.
 
-We may share this information with our hosting services and third-party integrations: GitHub, Netlify, Vercel, Gravatar.
+We may share this information with our hosting services and third-party integrations: GitHub, Vercel, Gravatar.
 
 Under the UK General Data Protection Regulation (UK GDPR), the lawful bases we rely on for processing this information are:
 
@@ -43,7 +43,9 @@ Under the UK General Data Protection Regulation (UK GDPR), the lawful bases we r
 
 Your name is stored with our hosting providers and publicly displayed on _The Definitive Edition_ website.
 
-Your email address is hashed using the MD5 hashing algorithm and stored alongside your name. It won't be displayed, but the hashed version may be accessible from the source code as we use it to publicly display your user avatar.
+If you are making a content contribution and provide an email address, your email address will be hashed using the MD5 hashing algorithm and stored alongside your name. It won't be displayed, but the hashed version may be accessible from the source code as we use it to publicly display your user avatar.
+
+If you are submitting a comment and provide an email address, your email address will be stored in plain text as-is alongside your name. We don't currently use it for any purpose. _This is a limitation of the commenting software we're using and we are working to improve this._
 
 ## Your data protection rights
 
