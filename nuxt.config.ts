@@ -1,7 +1,7 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   extends: [
-    '@thombruce/tnt'
+    '@thombruce/tnt-content'
   ],
   runtimeConfig: {
     twitchClientID: process.env.TWITCH_CLIENT_ID,
