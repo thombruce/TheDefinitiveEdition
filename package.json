@@ -10,7 +10,6 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "@netlify/functions": "^1.6.0",
     "@types/node": "^20.5.1",
     "nuxt": "^3.6.5"
   },
